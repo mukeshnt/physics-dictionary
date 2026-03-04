@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Physics Dictionary — Mukesh T</title>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Fira+Sans:wght@300;400;500;600&family=Fira+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg:      #f8f6f1;
+      --surface: #ffffff;
+      --cream:   #ede9e0;
+      --ink:     #1a1714;
+      --ink2:    #3d3830;
+      --muted:   #7c766c;
+      --border:  #ddd8cc;
+      --accent:  #1a4fa0;
+      --gold:    #8c6d1f;
+      --new-bg:  #e8f0fb;
+      --new-fg:  #1a4fa0;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Fira Sans', sans-serif; background: var(--bg); color: var(--ink); font-size: 16px; line-height: 1.65; }
+
+    /* NAV */
+    nav { position: sticky; top: 0; z-index: 200; background: var(--ink); display: flex; align-items: center; justify-content: space-between; padding: 0 48px; height: 58px; border-bottom: 1px solid #2e2b27; }
+    .nav-brand { display: flex; align-items: baseline; gap: 10px; text-decoration: none; }
+    .nav-brand-name { font-family: 'EB Garamond', serif; font-size: 1.25rem; font-weight: 500; color: #f0ece4; letter-spacing: 0.01em; }
+    .nav-brand-sub { font-family: 'Fira Mono', monospace; font-size: 0.65rem; color: #6a6560; letter-spacing: 0.1em; text-transform: uppercase; }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a { color: #6a6560; text-decoration: none; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.18s; }
+    .nav-links a:hover { color: #f0ece4; }
+
+    /* HERO */
+    .hero { background: var(--ink); padding: 96px 48px 108px; position: relative; overflow: hidden; }
+    .hero::before { content: 'E=mc²'; position: absolute; right: 6%; top: 50%; transform: translateY(-50%); font-family: 'EB Garamond', serif; font-style: italic; font-size: clamp(5rem, 14vw, 12rem); color: #ffffff06; pointer-events: none; user-select: none; white-space: nowrap; }
+    .hero-inner { max-width: 700px; position: relative; }
+    .hero-eyebrow { font-family: 'Fira Mono', monospace; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 22px; display: flex; align-items: center; gap: 10px; }
+    .hero-eyebrow::after { content: ''; display: inline-block; width: 40px; height: 1px; background: var(--gold); }
+    .hero h1 { font-family: 'EB Garamond', serif; font-size: clamp(2.8rem, 6vw, 5rem); font-weight: 500; color: #f0ece4; line-height: 1.1; margin-bottom: 8px; }
+    .hero h1 em { font-style: italic; color: #6fa3e8; }
+    .hero-byline { font-family: 'Fira Mono', monospace; font-size: 0.75rem; color: #4a4540; letter-spacing: 0.08em; margin-bottom: 28px; }
+    .hero-desc { color: #8a857c; max-width: 500px; font-size: 1rem; line-height: 1.75; margin-bottom: 48px; }
+    .hero-stats { display: flex; gap: 48px; flex-wrap: wrap; margin-bottom: 52px; }
+    .stat .n { font-family: 'EB Garamond', serif; font-size: 2.2rem; font-weight: 500; color: #f0ece4; display: block; line-height: 1; }
+    .stat .l { font-size: 0.72rem; color: #5a5550; letter-spacing: 0.1em; text-transform: uppercase; font-family: 'Fira Mono', monospace; margin-top: 4px; }
+
+    /* SEARCH */
+    .search-wrap { max-width: 560px; position: relative; }
+    .search-wrap input { width: 100%; padding: 16px 52px 16px 20px; background: #12100e; color: #f0ece4; border: 1px solid #2e2b27; font-family: 'Fira Sans', sans-serif; font-size: 0.95rem; outline: none; border-radius: 2px; transition: border-color 0.2s; }
+    .search-wrap input::placeholder { color: #3a3730; }
+    .search-wrap input:focus { border-color: var(--accent); }
+    .search-icon { position: absolute; right: 16px; top: 50%; transform: translateY(-50%); color: #3a3730; font-size: 1rem; pointer-events: none; }
+    #search-results { position: absolute; left: 0; right: 0; top: calc(100% + 4px); background: #12100e; border: 1px solid #2e2b27; border-radius: 2px; display: none; z-index: 300; max-height: 360px; overflow-y: auto; }
+    .r-item { padding: 12px 20px; cursor: pointer; border-bottom: 1px solid #1e1c19; transition: background 0.12s; display: flex; justify-content: space-between; align-items: center; }
+    .r-item:last-child { border-bottom: none; }
+    .r-item:hover { background: #1c1a17; }
+    .r-term { color: #f0ece4; font-weight: 500; font-size: 0.9rem; }
+    .r-cat { font-size: 0.7rem; color: #5a5550; font-family: 'Fira Mono', monospace; }
+    .r-no { color: #3a3730; font-size: 0.85rem; padding: 14px 20px; }
+
+    /* ALPHA */
+    .alpha-bar-section { background: var(--cream); border-bottom: 1px solid var(--border); }
+    .alpha-bar-inner { max-width: 1240px; margin: 0 auto; padding: 24px 48px; }
+    .alpha-bar-label { font-family: 'Fira Mono', monospace; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+    .alpha-bar { display: flex; flex-wrap: wrap; gap: 5px; }
+    .alpha-btn { width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; font-family: 'Fira Mono', monospace; font-size: 0.8rem; font-weight: 500; border: 1px solid var(--border); background: var(--surface); color: var(--ink2); cursor: pointer; transition: all 0.15s; text-decoration: none; border-radius: 1px; }
+    .alpha-btn.inactive { opacity: 0.3; pointer-events: none; }
+    .alpha-btn:hover:not(.inactive), .alpha-btn.active { background: var(--ink); color: #f0ece4; border-color: var(--ink); }
+    .alpha-btn.view-all { width: auto; padding: 0 12px; font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); border-color: var(--accent); }
+    .alpha-btn.view-all:hover { background: var(--accent); color: white; border-color: var(--accent); }
+
+    /* PAGE */
+    .page { max-width: 1240px; margin: 0 auto; padding: 0 48px; }
+    .sec-head { padding: 60px 0 36px; }
+    .sec-eyebrow { font-family: 'Fira Mono', monospace; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+    .sec-title { font-family: 'EB Garamond', serif; font-size: 2rem; font-weight: 500; line-height: 1.25; }
+    .sec-sub { color: var(--muted); margin-top: 6px; font-size: 0.9rem; }
+
+    /* CARDS */
+    .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 16px; padding-bottom: 64px; }
+    .card { background: var(--surface); border: 1px solid var(--border); padding: 26px 26px 22px; border-radius: 2px; cursor: pointer; transition: border-color 0.18s, box-shadow 0.18s; }
+    .card:hover { border-color: var(--accent); box-shadow: 0 2px 16px rgba(26,79,160,0.08); }
+    .card-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
+    .card-letter { width: 38px; height: 38px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: var(--ink); color: #f0ece4; font-family: 'EB Garamond', serif; font-size: 1.15rem; font-weight: 500; border-radius: 1px; }
+    .card-tags { display: flex; flex-wrap: wrap; gap: 5px; justify-content: flex-end; }
+    .tag { font-family: 'Fira Mono', monospace; font-size: 0.62rem; letter-spacing: 0.05em; text-transform: uppercase; padding: 2px 7px; border-radius: 1px; font-weight: 500; }
+    .tag-cat { background: #e8f0fb; color: var(--accent); }
+    .tag-featured { background: #fef5e4; color: var(--gold); }
+    .tag-new { background: var(--new-bg); color: var(--new-fg); }
+    .card-term { font-family: 'EB Garamond', serif; font-size: 1.3rem; font-weight: 500; margin-bottom: 8px; line-height: 1.3; }
+    .card-excerpt { color: var(--muted); font-size: 0.875rem; line-height: 1.65; }
+    .card-foot { margin-top: 18px; }
+    .card-read { font-family: 'Fira Mono', monospace; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); font-weight: 500; }
+
+    /* CATEGORIES */
+    .cats-section { background: var(--cream); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .cat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 10px; padding-bottom: 64px; }
+    .cat-item { background: var(--surface); border: 1px solid var(--border); padding: 16px 18px; border-radius: 2px; cursor: pointer; display: flex; align-items: center; justify-content: space-between; transition: all 0.15s; }
+    .cat-item:hover { background: var(--ink); color: #f0ece4; border-color: var(--ink); }
+    .cat-item:hover .cat-count { color: #5a5550; }
+    .cat-name { font-weight: 500; font-size: 0.88rem; }
+    .cat-count { font-family: 'Fira Mono', monospace; font-size: 0.72rem; color: var(--muted); }
+
+    /* RECENT */
+    .recent-list { padding-bottom: 64px; }
+    .recent-item { display: flex; gap: 20px; align-items: flex-start; padding: 22px 0; border-bottom: 1px solid var(--border); }
+    .recent-item:last-child { border-bottom: none; }
+    .recent-tag-new { flex-shrink: 0; margin-top: 3px; font-family: 'Fira Mono', monospace; font-size: 0.62rem; padding: 3px 8px; background: var(--accent); color: white; border-radius: 1px; letter-spacing: 0.06em; text-transform: uppercase; }
+    .recent-body { flex: 1; }
+    .recent-term { font-family: 'EB Garamond', serif; font-size: 1.1rem; font-weight: 500; cursor: pointer; transition: color 0.15s; }
+    .recent-term:hover { color: var(--accent); }
+    .recent-def { color: var(--muted); font-size: 0.855rem; line-height: 1.65; margin-top: 3px; }
+    .recent-more { color: var(--accent); font-size: 0.82rem; cursor: pointer; }
+    .recent-more:hover { text-decoration: underline; }
+
+    /* AUTHOR */
+    .author-section { background: var(--ink); color: #f0ece4; }
+    .author-inner { max-width: 1240px; margin: 0 auto; padding: 80px 48px; display: grid; grid-template-columns: 1fr 380px; gap: 80px; align-items: center; }
+    .author-eyebrow { font-family: 'Fira Mono', monospace; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+    .author-title { font-family: 'EB Garamond', serif; font-size: 2.2rem; font-weight: 500; line-height: 1.2; margin-bottom: 16px; }
+    .author-body { color: #6a6560; line-height: 1.75; font-size: 0.95rem; }
+    .author-links { margin-top: 32px; display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn-solid { padding: 12px 26px; background: var(--accent); color: white; font-size: 0.82rem; font-weight: 600; border-radius: 2px; text-decoration: none; transition: opacity 0.2s; }
+    .btn-solid:hover { opacity: 0.85; }
+    .btn-ghost { padding: 12px 26px; background: transparent; border: 1px solid #2e2b27; color: #8a857c; font-size: 0.82rem; font-weight: 500; border-radius: 2px; text-decoration: none; transition: all 0.18s; }
+    .btn-ghost:hover { border-color: #5a5550; color: #f0ece4; }
+    .author-card { background: #12100e; border: 1px solid #2e2b27; padding: 36px 32px; border-radius: 2px; }
+    .author-card-monogram { width: 64px; height: 64px; border-radius: 50%; background: var(--accent); color: white; display: flex; align-items: center; justify-content: center; font-family: 'EB Garamond', serif; font-size: 1.6rem; font-weight: 500; margin-bottom: 16px; }
+    .author-card-name { font-family: 'EB Garamond', serif; font-size: 1.4rem; font-weight: 500; margin-bottom: 4px; }
+    .author-card-role { font-family: 'Fira Mono', monospace; font-size: 0.7rem; color: #4a4540; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 20px; }
+    .author-card-stats { display: flex; gap: 24px; }
+    .ac-stat .n { font-family: 'EB Garamond', serif; font-size: 1.6rem; color: #f0ece4; display: block; line-height: 1; }
+    .ac-stat .l { font-size: 0.68rem; color: #4a4540; font-family: 'Fira Mono', monospace; letter-spacing: 0.08em; text-transform: uppercase; margin-top: 2px; }
+
+    /* MODAL */
+    .overlay { position: fixed; inset: 0; z-index: 500; background: rgba(10,9,8,0.82); backdrop-filter: blur(5px); display: none; align-items: flex-start; justify-content: center; padding: 56px 20px; overflow-y: auto; }
+    .overlay.open { display: flex; }
+    .modal { background: var(--surface); max-width: 700px; width: 100%; padding: 52px; border-radius: 2px; position: relative; animation: rise 0.22s ease; border: 1px solid var(--border); }
+    @keyframes rise { from { transform: translateY(18px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    .modal-close { position: absolute; top: 18px; right: 18px; background: none; border: none; font-size: 1.2rem; color: var(--muted); cursor: pointer; padding: 4px 8px; transition: color 0.15s; }
+    .modal-close:hover { color: var(--ink); }
+    .modal-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
+    .modal-title { font-family: 'EB Garamond', serif; font-size: 2.5rem; font-weight: 500; line-height: 1.15; margin-bottom: 6px; }
+    .modal-letter { font-family: 'Fira Mono', monospace; font-size: 0.7rem; color: var(--muted); letter-spacing: 0.1em; margin-bottom: 24px; }
+    .modal-divider { border: none; border-top: 1px solid var(--border); margin-bottom: 24px; }
+    .modal-body { color: var(--ink2); line-height: 1.85; font-size: 1rem; }
+    .modal-foot { margin-top: 32px; padding-top: 22px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+    .modal-author-line { font-size: 0.8rem; color: var(--muted); }
+    .modal-author-line strong { color: var(--ink2); font-weight: 600; }
+
+    /* EMPTY */
+    .empty-state { grid-column: 1/-1; text-align: center; padding: 60px 20px; color: var(--muted); }
+    .empty-state .e-icon { font-size: 2rem; margin-bottom: 12px; }
+    .empty-state p { font-size: 0.9rem; }
+    .empty-reset { display: inline-block; margin-top: 12px; font-size: 0.8rem; color: var(--accent); cursor: pointer; text-decoration: underline; }
+
+    /* FOOTER */
+    footer { background: #0d0c0a; color: #3a3530; padding: 52px 48px 32px; }
+    .footer-grid { max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; margin-bottom: 40px; }
+    .footer-brand { font-family: 'EB Garamond', serif; font-size: 1.1rem; color: #8a857c; margin-bottom: 8px; }
+    .footer-tagline { font-size: 0.83rem; line-height: 1.6; }
+    footer h4 { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.15em; color: #4a4540; margin-bottom: 14px; font-family: 'Fira Mono', monospace; }
+    footer ul { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+    footer ul li a { color: #3a3530; text-decoration: none; font-size: 0.85rem; transition: color 0.15s; }
+    footer ul li a:hover { color: #8a857c; }
+    .footer-bottom { max-width: 1240px; margin: 0 auto; padding-top: 22px; border-top: 1px solid #1a1816; font-size: 0.75rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      nav, .hero, .page, footer { padding-left: 24px; padding-right: 24px; }
+      .alpha-bar-inner { padding: 18px 24px; }
+      .hero { padding-top: 64px; padding-bottom: 80px; }
+      .author-inner { grid-template-columns: 1fr; gap: 40px; padding: 60px 24px; }
+      .author-card { display: none; }
+      .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+      .cards-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .hero h1 { font-size: 2.4rem; }
+      .hero-stats { gap: 28px; }
+      .modal { padding: 28px 22px; }
+      .modal-title { font-size: 1.8rem; }
+      .footer-bottom { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="#">
+    <span class="nav-brand-name">Physics Dictionary</span>
+    <span class="nav-brand-sub">by Mukesh T</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#browse">Browse</a></li>
+    <li><a href="#categories">Categories</a></li>
+    <li><a href="#recent">Recently Added</a></li>
+    <li><a href="#about">About</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">The Authoritative Physics Lexicon</div>
+    <h1>Physics<br/><em>Dictionary</em></h1>
+    <div class="hero-byline">Curated &amp; defined by Mukesh T</div>
+    <p class="hero-desc">Every term, principle, and framework you need to understand and navigate modern physics — from classical mechanics to quantum field theory.</p>
+    <div class="hero-stats">
+      <div class="stat"><span class="n" id="stat-terms">—</span><span class="l">Terms Defined</span></div>
+      <div class="stat"><span class="n" id="stat-cats">—</span><span class="l">Categories</span></div>
+      <div class="stat"><span class="n">∞</span><span class="l">Continuously Updated</span></div>
+    </div>
+    <div class="search-wrap">
+      <input type="text" id="search-input" placeholder="Search terms, principles, equations…" autocomplete="off" spellcheck="false"/>
+      <span class="search-icon">⌕</span>
+      <div id="search-results"></div>
+    </div>
+  </div>
+</section>
+
+<div class="alpha-bar-section" id="browse">
+  <div class="alpha-bar-inner">
+    <div class="alpha-bar-label">Browse by first letter</div>
+    <div class="alpha-bar" id="alpha-bar"></div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="sec-head">
+    <div class="sec-eyebrow" id="grid-eyebrow">Most Referenced</div>
+    <h2 class="sec-title" id="grid-title">Essential Terms</h2>
+    <p class="sec-sub" id="grid-sub">The foundational vocabulary every physicist needs to know.</p>
+  </div>
+  <div class="cards-grid" id="cards-grid"></div>
+</div>
+
+<div class="cats-section" id="categories">
+  <div class="page">
+    <div class="sec-head">
+      <div class="sec-eyebrow">Organised Knowledge</div>
+      <h2 class="sec-title">Browse by Category</h2>
+    </div>
+    <div class="cat-grid" id="cat-grid"></div>
+  </div>
+</div>
+
+<div class="page" id="recent">
+  <div class="sec-head">
+    <div class="sec-eyebrow">Always Growing</div>
+    <h2 class="sec-title">Recently Added</h2>
+    <p class="sec-sub" id="recent-sub"></p>
+  </div>
+  <div class="recent-list" id="recent-list"></div>
+</div>
+
+<div class="author-section" id="about">
+  <div class="author-inner">
+    <div>
+      <div class="author-eyebrow">Canonical Source</div>
+      <h2 class="author-title">Defined by Mukesh T</h2>
+      <p class="author-body">Every definition in this dictionary is authored by Mukesh T — not scraped, not crowdsourced, but written with precision and authority. These are the canonical definitions for the serious student and practitioner of physics.</p>
+      <p class="author-body" style="margin-top:12px">This dictionary exists to give physics a shared, precise vocabulary — from introductory mechanics to the frontiers of quantum gravity and cosmology.</p>
+      <div class="author-links">
+        <a href="#browse" class="btn-solid">Browse All Terms</a>
+        <a href="#about" class="btn-ghost">About the Author</a>
+      </div>
+    </div>
+    <div class="author-card">
+      <div class="author-card-monogram">MT</div>
+      <div class="author-card-name">Mukesh T</div>
+      <div class="author-card-role">Physicist &amp; Author</div>
+      <div class="author-card-stats">
+        <div class="ac-stat"><span class="n" id="as-terms">—</span><span class="l">Terms</span></div>
+        <div class="ac-stat"><span class="n" id="as-cats">—</span><span class="l">Categories</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">Physics Dictionary</div>
+      <p class="footer-tagline">The authoritative lexicon of physics. Curated and defined by Mukesh T.</p>
+    </div>
+    <div>
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#browse">Full Dictionary</a></li>
+        <li><a href="#categories">Categories</a></li>
+        <li><a href="#about">About &amp; Attribution</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Resources</h4>
+      <ul>
+        <li><a href="#">Author's Website</a></li>
+        <li><a href="#">IP Policy</a></li>
+        <li><a href="#">Terms of Use</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Mukesh T. All rights reserved.</span>
+    <span>Unauthorised reproduction prohibited.</span>
+  </div>
+</footer>
+
+<div class="overlay" id="overlay">
+  <div class="modal" role="dialog" aria-modal="true">
+    <button class="modal-close" id="modal-close" aria-label="Close">✕</button>
+    <div class="modal-tags" id="modal-tags"></div>
+    <h2 class="modal-title" id="modal-title"></h2>
+    <div class="modal-letter" id="modal-letter"></div>
+    <hr class="modal-divider"/>
+    <p class="modal-body" id="modal-body"></p>
+    <div class="modal-foot">
+      <span class="modal-author-line">Defined by <strong>Mukesh T</strong></span>
+      <span id="modal-cat-label" class="tag tag-cat"></span>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── INLINE DATA (injected by build.py — do not edit here, edit terms.json) ──
+const allTerms = [
+  {
+    "id": 1,
+    "term": "Acceleration",
+    "letter": "A",
+    "category": "Classical Mechanics",
+    "featured": true,
+    "new": false,
+    "coined_by_author": false,
+    "excerpt": "The rate of change of velocity with respect to time. A vector quantity measured in metres per second squared (m/s²).",
+    "definition": "Acceleration is the rate of change of velocity with respect to time. It is a vector quantity, meaning it has both magnitude and direction, and is measured in metres per second squared (m/s²). An object accelerates whenever its speed changes, its direction of motion changes, or both. Newton's Second Law establishes that the net force on an object equals its mass multiplied by its acceleration (F = ma), making acceleration the bridge between force and motion."
+  },
+  {
+    "id": 2,
+    "term": "Angular Momentum",
+    "letter": "A",
+    "category": "Classical Mechanics",
+    "featured": true,
+    "new": false,
+    "coined_by_author": false,
+    "excerpt": "The rotational equivalent of linear momentum, defined as the product of a body's moment of inertia and its angular velocity.",
+    "definition": "Angular momentum is the rotational equivalent of linear momentum. For a point mass, it is defined as L = r × p, where r is the position vector and p is the linear momentum. For a rigid body, L = Iω, where I is the moment of inertia and ω is the angular velocity. Angular momentum is conserved in the absence of external torques — a principle that explains why a spinning ice skater speeds up when pulling their arms inward. It is a fundamental conserved quantity in both classical and quantum mechanics."
+  },
+  {
+    "id": 3,
+    "term": "Blackbody Radiation",
+    "letter": "B",
+    "category": "Thermodynamics & Statistical Mechanics",
+    "featured": true,
+    "new": false,
+    "coined_by_author": false,
+    "excerpt": "Electromagnetic radiation emitted by an idealised opaque body in thermal equilibrium, described by the Planck distribution.",
+    "definition": "Blackbody radiation is the electromagnetic radiation emitted by an idealised object — a blackbody — that absorbs all incident radiation regardless of frequency or angle. The spectral distribution of this radiation depends only on the body's temperature, not on its composition or shape. Max Planck's 1900 derivation of the correct spectral distribution, which required quantising energy as E = hf, marked the birth of quantum theory. The peak wavelength of emission shifts to shorter wavelengths as temperature increases, described by Wien's Displacement Law (λ_max · T = constant)."
+  },
+  {
+    "id": 4,
+    "term": "Conservation of Energy",
+    "letter": "C",
+    "category": "Classical Mechanics",
+    "featured": true,
+    "new": false,
+    "coined_by_author": false,
+    "excerpt": "The principle that the total energy of an isolated system remains constant; energy can only be transformed, never created or destroyed.",
+    "definition": "Conservation of energy is one of the most fundamental principles in all of physics. It states that the total energy of an isolated system remains constant over time — energy can change form (kinetic to potential, thermal to electrical) but cannot be created or destroyed. This principle emerges mathematically from Noether's theorem as a consequence of the time-translation symmetry of the laws of physics. It applies across all domains: classical mechanics, thermodynamics, electromagnetism, quantum mechanics, and general relativity."
+  },
+  {
+    "id": 5,
+    "term": "Dark Matter",
+    "letter": "D",
+    "category": "Astrophysics & Cosmology",
+    "featured": true,
+    "new": false,
+    "coined_by_author": false,
+    "excerpt": "A hypothetical form of matter that does not interact with the electromagnetic field but whose gravitational effects are observed throughout the universe.",
+    "definition": "Dark matter is a hypothetical form of matter that does not emit, absorb, or reflect light — making it invisible to electromagnetic observation — yet whose gravitational influence is evident throughout the universe. Evidence for dark matter comes from galaxy rotation curves (stars orbit too fast for visible matter alone), gravitational lensing anomalies, and large-scale structure formation. Current estimates suggest dark matter constitutes approximately 27% of the total energy content of the universe. Its fundamental nature remains one of the deepest open questions in modern physics."
+  },
+  {
+    "id": 6,
+    "term": "Doppler Effect",
+    "letter": "D",
+    "category": "Waves & Optics",
+    "featured": false,
+    "new": true,
+    "coined_by_author": false,
+    "excerpt": "The change in frequency or wavelength of a wave perceived by an observer moving relative to the wave source.",
+    "definition": "The Doppler effect is the change in frequency (and wavelength) of a wave as perceived by an observer who is in relative motion with respect to the wave source. When source and observer approach each other, the perceived frequency is higher than the emitted frequency; when they recede, it is lower. Named after Austrian physicist Christian Doppler (1842), the effect applies to all waves — sound, light, and matter waves. In astronomy, it is used to measure the recession velocities of stars and galaxies (redshift), and is fundamental to radar, sonar, and medical ultrasound technologies."
+  },
+  {
+    "id": 7,
+    "term": "Entropy",
+    "letter": "E",
+    "category": "Thermodynamics & Statistical Mechanics",
+    "featured": true,
+    "new": false,
+    "coined_by_author": false,
+    "excerpt": "A thermodynamic quantity representing the degree of disorder or randomness in a system. The Second Law of Thermodynamics states that entropy in an isolated system never decreases.",
+    "definition": "Entropy is a central concept in thermodynamics and statistical mechanics, quantifying the degree of disorder, randomness, or the number of available microstates in a system. In classical thermodynamics, entropy change is defined as dS = dQ_rev / T, where dQ_rev is the reversible heat transfer and T is temperature. Boltzmann's statistical formulation gives S = k_B ln(Ω), connecting entropy to the number of microstates Ω. The Second Law of Thermodynamics states that the total entropy of an isolated system can never decrease over time — establishing a thermodynamic arrow of time. High entropy states are overwhelmingly more probable than low entropy states."
+  },
+  {
+    "id": 8,
+    "term": "Electromagnetic Induction",
+    "letter": "E",
+    "category": "Electromagnetism",
+    "featured": false,
+    "new": true,
+    "coined_by_author": false,
+    "excerpt": "The production of an electromotive force across a conductor when it is exposed to a changing magnetic flux, described by Faraday's Law.",
+    "definition": "Electromagnetic induction is the phenomenon by which a changing magnetic flux through a circuit induces an electromotive force (EMF) in that circuit. Discovered independently by Michael Faraday and Joseph Henry in 1831, it is quantified by Faraday's Law: the induced EMF equals the negative rate of change of magnetic flux (ε = −dΦ/dt). The negative sign reflects Lenz's Law: the induced current creates a magnetic field opposing the change that caused it. Electromagnetic induction is the operating principle behind electric generators, transformers, induction motors, and wireless charging — making it one of the most technologically consequential discoveries in physics."
+  },
+  {
+    "id": 9,
+    "term": "Fine-Structure Constant",
+    "letter": "F",
+    "category": "Quantum Mechanics",
+    "featured": false,
+    "new": false,
+    "coined_by_author": false,
+    "excerpt": "A dimensionless physical constant (α ≈ 1/137) characterising the strength of the electromagnetic interaction between elementary charged particles.",
+    "definition": "The fine-structure constant (α) is a dimensionless physical constant approximately equal to 1/137.036. It characterises the strength of the electromagnetic interaction between elementary charged particles and appears throughout quantum electrodynamics, atomic physics, and condensed matter physics. Defined as α = e²/(4πε₀ℏc), it encodes the electron charge, Planck's constant, the speed of light, and the permittivity of free space into a single pure number. Why α has the value it does — and not any other — remains one of the most profound unanswered questions in fundamental physics. Richard Feynman called it 'one of the greatest damn mysteries of physics.'"
+  },
+  {
+    "id": 10,
+    "term": "Gravitational Waves",
+    "letter": "G",
+    "category": "Astrophysics & Cosmology",
+    "featured": true,
+    "new": false,
+    "coined_by_author": false,
+    "excerpt": "Ripples in the curvature of spacetime, generated by accelerating masses, that propagate outward as waves at the speed of light.",
+    "definition": "Gravitational waves are ripples in the fabric of spacetime generated by accelerating masses — most powerfully by catastrophic events such as merging black holes or neutron stars. Predicted by Einstein's General Theory of Relativity in 1916 and first directly detected by LIGO in September 2015 (announced in February 2016), gravitational waves travel at the speed of light and cause stretching and squeezing of spacetime as they pass. The first detected signal, GW150914, resulted from the merger of two black holes over a billion light-years away. Gravitational wave astronomy has opened an entirely new observational window on the universe."
+  },
+  {
+    "id": 11,
+    "term": "Heisenberg Uncertainty Principle",
+    "letter": "H",
+    "category": "Quantum Mechanics",
+    "featured": true,
+    "new": false,
+    "coined_by_author": false,
+    "excerpt": "A fundamental limit in quantum mechanics stating that the position and momentum of a particle cannot both be known to arbitrary precision simultaneously.",
+    "definition": "The Heisenberg Uncertainty Principle states that there is a fundamental limit to the precision with which certain pairs of physical properties of a particle — known as complementary variables — can be known simultaneously. The most famous form is: Δx · Δp ≥ ℏ/2, meaning the product of the uncertainties in position (Δx) and momentum (Δp) is always at least ℏ/2. This is not a limitation of measurement technology but an intrinsic feature of quantum systems. It arises from the wave-particle duality of matter and has profound consequences for atomic structure, nuclear physics, and the stability of matter itself."
+  },
+  {
+    "id": 12,
+    "term": "Ideal Gas Law",
+    "letter": "I",
+    "category": "Thermodynamics & Statistical Mechanics",
+    "featured": false,
+    "new": false,
+    "coined_by_author": false,
+    "excerpt": "An equation of state for a hypothetical ideal gas: PV = nRT, relating pressure, volume, temperature, and amount of substance.",
+    "definition": "The Ideal Gas Law is an equation of state that describes the behaviour of a hypothetical ideal gas, in which particles have no intermolecular interactions and occupy no volume. It is expressed as PV = nRT, where P is pressure, V is volume, n is the amount of substance in moles, R is the universal gas constant (8.314 J/mol·K), and T is absolute temperature. The law is a synthesis of Boyle's Law (PV = constant at fixed T), Charles's Law (V ∝ T at fixed P), and Avogadro's Law. Real gases deviate from ideal behaviour at high pressures and low temperatures, where the van der Waals equation provides a better approximation."
+  },
+  {
+    "id": 13,
+    "term": "Lorentz Transformation",
+    "letter": "L",
+    "category": "Special & General Relativity",
+    "featured": false,
+    "new": true,
+    "coined_by_author": false,
+    "excerpt": "The set of linear equations describing how spacetime coordinates transform between two inertial reference frames moving at constant velocity relative to each other.",
+    "definition": "The Lorentz Transformation is the set of linear equations that relate the spacetime coordinates (t, x, y, z) measured in one inertial reference frame to those measured in another frame moving at constant velocity v relative to the first. Derived by Hendrik Lorentz and later given physical interpretation by Einstein in Special Relativity (1905), the transformations replace the classical Galilean transformations and ensure that the speed of light is the same in all inertial frames. Key physical consequences include time dilation (moving clocks run slow), length contraction (moving objects are shortened along the direction of motion), and the relativity of simultaneity."
+  },
+  {
+    "id": 14,
+    "term": "Maxwell's Equations",
+    "letter": "M",
+    "category": "Electromagnetism",
+    "featured": true,
+    "new": false,
+    "coined_by_author": false,
+    "excerpt": "A set of four partial differential equations that, together, describe the behaviour of electric and magnetic fields and form the foundation of classical electromagnetism.",
+    "definition": "Maxwell's Equations are a set of four partial differential equations — Gauss's Law for electricity, Gauss's Law for magnetism, Faraday's Law, and the Ampère–Maxwell Law — that collectively describe how electric charges produce electric fields, how magnetic monopoles do not exist, how changing magnetic fields produce electric fields, and how electric currents and changing electric fields produce magnetic fields. Formulated by James Clerk Maxwell in 1865, they unified electricity, magnetism, and optics into a single coherent theory, and their solutions predicted the existence of electromagnetic waves travelling at the speed of light — the first theoretical deduction that light is an electromagnetic phenomenon."
+  },
+  {
+    "id": 15,
+    "term": "Neutrino",
+    "letter": "N",
+    "category": "Particle Physics",
+    "featured": false,
+    "new": false,
+    "coined_by_author": false,
+    "excerpt": "A nearly massless, electrically neutral elementary particle that interacts only via the weak nuclear force and gravity, passing through ordinary matter almost undisturbed.",
+    "definition": "The neutrino is a nearly massless, electrically neutral elementary particle belonging to the lepton family. It comes in three flavours — electron neutrino, muon neutrino, and tau neutrino — each paired with a corresponding charged lepton. Neutrinos interact only through the weak nuclear force and gravity, making them extraordinarily difficult to detect: roughly 65 billion solar neutrinos pass through every square centimetre of Earth's surface every second. Postulated by Pauli in 1930 to conserve energy in beta decay and experimentally detected in 1956, neutrino oscillations — the spontaneous change of one flavour to another — demonstrate that neutrinos have small but nonzero mass, a result beyond the original Standard Model."
+  },
+  {
+    "id": 16,
+    "term": "Photoelectric Effect",
+    "letter": "P",
+    "category": "Quantum Mechanics",
+    "featured": true,
+    "new": false,
+    "coined_by_author": false,
+    "excerpt": "The emission of electrons from a material when it is illuminated by light of sufficient frequency — the phenomenon that established the quantum nature of light.",
+    "definition": "The photoelectric effect is the emission of electrons (photoelectrons) from a material when electromagnetic radiation of sufficient frequency is incident upon it. Crucially, the maximum kinetic energy of emitted electrons depends on the frequency of light, not its intensity — a result inexplicable by classical wave theory. Einstein's 1905 explanation, for which he received the 1921 Nobel Prize, proposed that light consists of discrete packets of energy (photons), each carrying energy E = hf. This quantisation of light was a foundational step in quantum mechanics and demonstrated the particle-like behaviour of electromagnetic radiation."
+  },
+  {
+    "id": 17,
+    "term": "Quantum Entanglement",
+    "letter": "Q",
+    "category": "Quantum Mechanics",
+    "featured": true,
+    "new": false,
+    "coined_by_author": false,
+    "excerpt": "A quantum phenomenon in which two or more particles become correlated such that the quantum state of each particle cannot be described independently, regardless of the distance separating them.",
+    "definition": "Quantum entanglement is a phenomenon in which two or more particles become correlated in such a way that the quantum state of each particle cannot be described independently of the others, even when separated by arbitrarily large distances. Measuring a property of one entangled particle instantaneously determines the corresponding property of its partner — a feature Einstein famously called 'spooky action at a distance.' Entanglement does not allow faster-than-light communication (no information is transmitted), but it is a uniquely non-classical resource exploited in quantum computing, quantum cryptography, and quantum teleportation. The 2022 Nobel Prize in Physics was awarded to Aspect, Clauser, and Zeilinger for experiments confirming the violation of Bell inequalities."
+  },
+  {
+    "id": 18,
+    "term": "Special Relativity",
+    "letter": "S",
+    "category": "Special & General Relativity",
+    "featured": true,
+    "new": false,
+    "coined_by_author": false,
+    "excerpt": "Einstein's 1905 theory built on two postulates: the laws of physics are the same in all inertial frames, and the speed of light in vacuum is constant for all observers.",
+    "definition": "Special Relativity is Albert Einstein's 1905 theory of space and time, built on two postulates: (1) the laws of physics are identical in all inertial (non-accelerating) reference frames, and (2) the speed of light in vacuum is the same for all observers, regardless of the motion of the source or observer. From these postulates emerge profound consequences: time dilation (moving clocks run slow), length contraction, the relativity of simultaneity, and the equivalence of mass and energy expressed by E = mc². Special Relativity replaced the classical Newtonian framework for all velocities and forms the foundation of modern particle physics and electromagnetism."
+  },
+  {
+    "id": 19,
+    "term": "Standard Model",
+    "letter": "S",
+    "category": "Particle Physics",
+    "featured": true,
+    "new": false,
+    "coined_by_author": false,
+    "excerpt": "The theoretical framework describing the fundamental particles and three of the four fundamental forces: the electromagnetic, weak, and strong nuclear forces.",
+    "definition": "The Standard Model of particle physics is the theoretical framework that describes the fundamental constituents of matter — quarks and leptons — and three of the four known fundamental forces: the electromagnetic force (mediated by photons), the weak nuclear force (mediated by W and Z bosons), and the strong nuclear force (mediated by gluons). Developed throughout the latter half of the 20th century, it has been experimentally validated with extraordinary precision. Its most recent triumph was the discovery of the Higgs boson at CERN in 2012, confirming the Higgs mechanism for mass generation. Notably, it does not incorporate gravity or explain dark matter or dark energy."
+  },
+  {
+    "id": 20,
+    "term": "Wave-Particle Duality",
+    "letter": "W",
+    "category": "Quantum Mechanics",
+    "featured": true,
+    "new": true,
+    "coined_by_author": false,
+    "excerpt": "The concept that every quantum entity exhibits both wave-like and particle-like properties depending on how it is observed or measured.",
+    "definition": "Wave-particle duality is the principle that quantum entities — electrons, photons, atoms, and even molecules — exhibit both wave-like and particle-like behaviour depending on the experimental context. In the double-slit experiment, particles produce an interference pattern characteristic of waves when unobserved, but behave as localized particles when their path is measured. de Broglie's 1924 hypothesis that all matter has an associated wavelength (λ = h/p) extended this duality to all particles. Wave-particle duality is not a paradox but a feature of quantum mechanics: the quantum wavefunction encodes all probabilistic information about a system, and measurement collapses it to a definite outcome."
+  },
+  {
+    "id": 21,
+    "term": "Dimensions",
+    "letter": "D",
+    "category": "Measurements",
+    "featured": true,
+    "new": true,
+    "coined_by_author": false,
+    "excerpt": "The concept that every quantum entity exhibits both wave-like and particle-like properties depending on how it is observed or measured.",
+    "definition": "Dimension of a physical quantity are the powers to which the fundamental quantities must be raised in order to get the units of the derived physical quantity."
+  }
+];
+
+// ── INIT ──
+(function() {
+  const cats = [...new Set(allTerms.map(t => t.category))].sort();
+  document.getElementById('stat-terms').textContent = allTerms.length + '+';
+  document.getElementById('stat-cats').textContent  = cats.length;
+  document.getElementById('as-terms').textContent   = allTerms.length;
+  document.getElementById('as-cats').textContent    = cats.length;
+  buildAlphaBar();
+  buildCategories(cats);
+  buildRecentList();
+  showGrid(allTerms.filter(t => t.featured), 'Most Referenced', 'Essential Terms', 'The foundational vocabulary every physicist needs to know.');
+})();
+
+// ── ALPHA BAR ──
+function buildAlphaBar() {
+  const bar  = document.getElementById('alpha-bar');
+  const used = new Set(allTerms.map(t => t.letter.toUpperCase()));
+
+  const allBtn = makeBtn('All', false);
+  allBtn.classList.add('view-all');
+  allBtn.addEventListener('click', e => {
+    e.preventDefault(); clearAlpha(); allBtn.classList.add('active');
+    showGrid(allTerms.filter(t => t.featured), 'Most Referenced', 'Essential Terms', 'The foundational vocabulary every physicist needs to know.');
+    scrollToGrid();
+  });
+  bar.appendChild(allBtn);
+
+  'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').forEach(l => {
+    const btn = makeBtn(l, !used.has(l));
+    btn.addEventListener('click', e => {
+      e.preventDefault();
+      if (!used.has(l)) return;
+      clearAlpha(); btn.classList.add('active');
+      const hits = allTerms.filter(t => t.letter.toUpperCase() === l);
+      showGrid(hits, 'Browse', 'Terms: ' + l, hits.length + ' term' + (hits.length !== 1 ? 's' : '') + ' starting with ' + l);
+      scrollToGrid();
+    });
+    bar.appendChild(btn);
+  });
+}
+
+function makeBtn(text, inactive) {
+  const b = document.createElement('a');
+  b.className = 'alpha-btn' + (inactive ? ' inactive' : '');
+  b.textContent = text; b.href = '#';
+  return b;
+}
+function clearAlpha() { document.querySelectorAll('.alpha-btn').forEach(b => b.classList.remove('active')); }
+
+// ── GRID ──
+function showGrid(terms, eyebrow, title, sub) {
+  document.getElementById('grid-eyebrow').textContent = eyebrow;
+  document.getElementById('grid-title').textContent   = title;
+  document.getElementById('grid-sub').textContent     = sub;
+  const grid = document.getElementById('cards-grid');
+  grid.innerHTML = '';
+  if (!terms.length) {
+    grid.innerHTML = '<div class="empty-state"><div class="e-icon">⚛</div><p>No terms found.</p><span class="empty-reset" onclick="resetGrid()">Reset</span></div>';
+    return;
+  }
+  terms.forEach(t => grid.appendChild(buildCard(t)));
+}
+
+function resetGrid() {
+  clearAlpha();
+  showGrid(allTerms.filter(t => t.featured), 'Most Referenced', 'Essential Terms', 'The foundational vocabulary every physicist needs to know.');
+}
+
+function buildCard(t) {
+  const el = document.createElement('div');
+  el.className = 'card';
+  el.innerHTML =
+    '<div class="card-head">' +
+      '<div class="card-letter">' + esc(t.letter.toUpperCase()) + '</div>' +
+      '<div class="card-tags">' +
+        '<span class="tag tag-cat">' + esc(t.category) + '</span>' +
+        (t.featured ? '<span class="tag tag-featured">★ Featured</span>' : '') +
+        (t.new      ? '<span class="tag tag-new">New</span>' : '') +
+      '</div>' +
+    '</div>' +
+    '<div class="card-term">' + esc(t.term) + '</div>' +
+    '<div class="card-excerpt">' + esc(t.excerpt) + '</div>' +
+    '<div class="card-foot"><span class="card-read">Read definition →</span></div>';
+  el.addEventListener('click', () => openModal(t.id));
+  return el;
+}
+
+// ── CATEGORIES ──
+function buildCategories(cats) {
+  const grid = document.getElementById('cat-grid');
+  cats.forEach(cat => {
+    const count = allTerms.filter(t => t.category === cat).length;
+    const el = document.createElement('div');
+    el.className = 'cat-item';
+    el.innerHTML = '<span class="cat-name">' + esc(cat) + '</span><span class="cat-count">' + count + '</span>';
+    el.addEventListener('click', () => {
+      clearAlpha();
+      const hits = allTerms.filter(t => t.category === cat);
+      showGrid(hits, 'Category', cat, hits.length + ' term' + (hits.length !== 1 ? 's' : ''));
+      scrollToGrid();
+    });
+    grid.appendChild(el);
+  });
+}
+
+// ── RECENT ──
+function buildRecentList() {
+  const newTerms = allTerms.filter(t => t.new);
+  document.getElementById('recent-sub').textContent =
+    allTerms.length + '+ terms — ' + newTerms.length + ' recently added.';
+  const list = document.getElementById('recent-list');
+  if (!newTerms.length) {
+    list.innerHTML = '<p style="color:var(--muted);font-size:.9rem;padding:24px 0">No recently added terms yet.</p>';
+    return;
+  }
+  newTerms.forEach(t => {
+    const el = document.createElement('div');
+    el.className = 'recent-item';
+    const preview = t.definition.length > 220 ? t.definition.slice(0, 220) + '…' : t.definition;
+    el.innerHTML =
+      '<span class="recent-tag-new">New</span>' +
+      '<div class="recent-body">' +
+        '<div class="recent-term" data-id="' + t.id + '">' + esc(t.term) + '</div>' +
+        '<p class="recent-def">' + esc(preview) + ' <span class="recent-more" data-id="' + t.id + '">View definition</span></p>' +
+      '</div>';
+    list.appendChild(el);
+  });
+}
+
+// ── MODAL ──
+function openModal(id) {
+  const t = allTerms.find(x => x.id === id);
+  if (!t) return;
+  document.getElementById('modal-title').textContent  = t.term;
+  document.getElementById('modal-letter').textContent = t.letter.toUpperCase() + ' — ' + t.category;
+  document.getElementById('modal-body').textContent   = t.definition;
+  document.getElementById('modal-cat-label').textContent = t.category;
+  document.getElementById('modal-tags').innerHTML =
+    '<span class="tag tag-cat">' + esc(t.category) + '</span>' +
+    (t.featured ? '<span class="tag tag-featured">★ Featured</span>' : '') +
+    (t.new      ? '<span class="tag tag-new">New</span>' : '');
+  document.getElementById('overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+  document.getElementById('overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('modal-close').addEventListener('click', closeModal);
+document.getElementById('overlay').addEventListener('click', e => { if (e.target.id === 'overlay') closeModal(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+// delegate data-id clicks (recent list)
+document.addEventListener('click', e => {
+  const el = e.target.closest('[data-id]');
+  if (el && !el.classList.contains('card')) { e.preventDefault(); openModal(+el.dataset.id); }
+});
+
+// ── SEARCH ──
+const inp = document.getElementById('search-input');
+const res = document.getElementById('search-results');
+inp.addEventListener('input', () => {
+  const q = inp.value.trim().toLowerCase();
+  if (!q) { res.style.display = 'none'; return; }
+  const hits = allTerms.filter(t =>
+    t.term.toLowerCase().includes(q) || t.category.toLowerCase().includes(q) || t.excerpt.toLowerCase().includes(q)
+  ).slice(0, 8);
+  res.innerHTML = hits.length
+    ? hits.map(t => '<div class="r-item" data-id="' + t.id + '"><span class="r-term">' + esc(t.term) + '</span><span class="r-cat">' + esc(t.category) + '</span></div>').join('')
+    : '<div class="r-no">No terms found.</div>';
+  res.style.display = 'block';
+});
+document.addEventListener('click', e => {
+  if (!inp.contains(e.target) && !res.contains(e.target)) res.style.display = 'none';
+});
+inp.addEventListener('keydown', e => {
+  if (e.key !== 'Enter') return;
+  const q = inp.value.trim().toLowerCase();
+  if (!q) return;
+  res.style.display = 'none'; inp.value = '';
+  const hits = allTerms.filter(t =>
+    t.term.toLowerCase().includes(q) || t.category.toLowerCase().includes(q) || t.excerpt.toLowerCase().includes(q)
+  );
+  clearAlpha();
+  showGrid(hits, 'Search Results', '"' + q + '"', hits.length + ' term' + (hits.length !== 1 ? 's' : '') + ' matched');
+  scrollToGrid();
+});
+
+// ── HELPERS ──
+function scrollToGrid() { document.querySelector('.page').scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+</script>
+</body>
+</html>
