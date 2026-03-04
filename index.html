@@ -23,184 +23,183 @@
     html { scroll-behavior: smooth; }
     body { font-family: 'Fira Sans', sans-serif; background: var(--bg); color: var(--ink); font-size: 16px; line-height: 1.65; }
 
-    /* NAV */
-    nav { position: sticky; top: 0; z-index: 200; background: var(--ink); display: flex; align-items: center; justify-content: space-between; padding: 0 48px; height: 58px; border-bottom: 1px solid #2e2b27; }
-    .nav-brand { display: flex; align-items: baseline; gap: 10px; text-decoration: none; }
-    .nav-brand-name { font-family: 'EB Garamond', serif; font-size: 1.25rem; font-weight: 500; color: #f0ece4; letter-spacing: 0.01em; }
-    .nav-brand-sub { font-family: 'Fira Mono', monospace; font-size: 0.65rem; color: #6a6560; letter-spacing: 0.1em; text-transform: uppercase; }
-    .nav-links { display: flex; gap: 28px; list-style: none; }
-    .nav-links a { color: #6a6560; text-decoration: none; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.18s; }
-    .nav-links a:hover { color: #f0ece4; }
+    /* HEADER */
+    .site-header { background: var(--ink); padding: 0 40px; height: 52px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #2e2b27; }
+    .header-brand { display: flex; align-items: baseline; gap: 10px; text-decoration: none; }
+    .header-brand-name { font-family: 'EB Garamond', serif; font-size: 1.15rem; font-weight: 500; color: #f0ece4; }
+    .header-brand-sub { font-family: 'Fira Mono', monospace; font-size: 0.6rem; color: #5a5550; letter-spacing: 0.1em; text-transform: uppercase; }
+    .header-links { display: flex; gap: 20px; list-style: none; }
+    .header-links a { color: #5a5550; text-decoration: none; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.18s; }
+    .header-links a:hover { color: #f0ece4; }
 
     /* HERO */
-    .hero { background: var(--ink); padding: 96px 48px 108px; position: relative; overflow: hidden; }
-    .hero::before { content: 'E=mc²'; position: absolute; right: 6%; top: 50%; transform: translateY(-50%); font-family: 'EB Garamond', serif; font-style: italic; font-size: clamp(5rem, 14vw, 12rem); color: #ffffff06; pointer-events: none; user-select: none; white-space: nowrap; }
-    .hero-inner { max-width: 700px; position: relative; }
-    .hero-eyebrow { font-family: 'Fira Mono', monospace; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 22px; display: flex; align-items: center; gap: 10px; }
-    .hero-eyebrow::after { content: ''; display: inline-block; width: 40px; height: 1px; background: var(--gold); }
-    .hero h1 { font-family: 'EB Garamond', serif; font-size: clamp(2.8rem, 6vw, 5rem); font-weight: 500; color: #f0ece4; line-height: 1.1; margin-bottom: 8px; }
+    .hero { background: var(--ink); padding: 56px 40px 72px; position: relative; overflow: hidden; }
+    .hero::before { content: 'E=mc\00B2'; position: absolute; right: 4%; top: 50%; transform: translateY(-50%); font-family: 'EB Garamond', serif; font-style: italic; font-size: clamp(4rem, 12vw, 10rem); color: #ffffff05; pointer-events: none; user-select: none; white-space: nowrap; }
+    .hero-inner { max-width: 680px; position: relative; }
+    .hero-eyebrow { font-family: 'Fira Mono', monospace; font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; display: flex; align-items: center; gap: 10px; }
+    .hero-eyebrow::after { content: ''; display: inline-block; width: 36px; height: 1px; background: var(--gold); }
+    .hero h1 { font-family: 'EB Garamond', serif; font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 500; color: #f0ece4; line-height: 1.1; margin-bottom: 8px; }
     .hero h1 em { font-style: italic; color: #6fa3e8; }
-    .hero-byline { font-family: 'Fira Mono', monospace; font-size: 0.75rem; color: #4a4540; letter-spacing: 0.08em; margin-bottom: 28px; }
-    .hero-desc { color: #8a857c; max-width: 500px; font-size: 1rem; line-height: 1.75; margin-bottom: 48px; }
-    .hero-stats { display: flex; gap: 48px; flex-wrap: wrap; margin-bottom: 52px; }
-    .stat .n { font-family: 'EB Garamond', serif; font-size: 2.2rem; font-weight: 500; color: #f0ece4; display: block; line-height: 1; }
-    .stat .l { font-size: 0.72rem; color: #5a5550; letter-spacing: 0.1em; text-transform: uppercase; font-family: 'Fira Mono', monospace; margin-top: 4px; }
+    .hero-byline { font-family: 'Fira Mono', monospace; font-size: 0.72rem; color: #4a4540; letter-spacing: 0.08em; margin-bottom: 22px; }
+    .hero-desc { color: #8a857c; max-width: 480px; font-size: 0.95rem; line-height: 1.75; margin-bottom: 36px; }
+    .hero-stats { display: flex; gap: 40px; flex-wrap: wrap; margin-bottom: 40px; }
+    .stat .n { font-family: 'EB Garamond', serif; font-size: 2rem; font-weight: 500; color: #f0ece4; display: block; line-height: 1; }
+    .stat .l { font-size: 0.68rem; color: #5a5550; letter-spacing: 0.1em; text-transform: uppercase; font-family: 'Fira Mono', monospace; margin-top: 4px; }
 
     /* SEARCH */
-    .search-wrap { max-width: 560px; position: relative; }
-    .search-wrap input { width: 100%; padding: 16px 52px 16px 20px; background: #12100e; color: #f0ece4; border: 1px solid #2e2b27; font-family: 'Fira Sans', sans-serif; font-size: 0.95rem; outline: none; border-radius: 2px; transition: border-color 0.2s; }
+    .search-wrap { max-width: 520px; position: relative; }
+    .search-wrap input { width: 100%; padding: 14px 48px 14px 18px; background: #12100e; color: #f0ece4; border: 1px solid #2e2b27; font-family: 'Fira Sans', sans-serif; font-size: 0.92rem; outline: none; border-radius: 2px; transition: border-color 0.2s; }
     .search-wrap input::placeholder { color: #3a3730; }
     .search-wrap input:focus { border-color: var(--accent); }
-    .search-icon { position: absolute; right: 16px; top: 50%; transform: translateY(-50%); color: #3a3730; font-size: 1rem; pointer-events: none; }
-    #search-results { position: absolute; left: 0; right: 0; top: calc(100% + 4px); background: #12100e; border: 1px solid #2e2b27; border-radius: 2px; display: none; z-index: 300; max-height: 360px; overflow-y: auto; }
-    .r-item { padding: 12px 20px; cursor: pointer; border-bottom: 1px solid #1e1c19; transition: background 0.12s; display: flex; justify-content: space-between; align-items: center; }
+    .search-icon { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); color: #3a3730; font-size: 1rem; pointer-events: none; }
+    #search-results { position: absolute; left: 0; right: 0; top: calc(100% + 4px); background: #12100e; border: 1px solid #2e2b27; border-radius: 2px; display: none; z-index: 300; max-height: 320px; overflow-y: auto; }
+    .r-item { padding: 11px 18px; cursor: pointer; border-bottom: 1px solid #1e1c19; transition: background 0.12s; display: flex; justify-content: space-between; align-items: center; }
     .r-item:last-child { border-bottom: none; }
     .r-item:hover { background: #1c1a17; }
-    .r-term { color: #f0ece4; font-weight: 500; font-size: 0.9rem; }
-    .r-cat { font-size: 0.7rem; color: #5a5550; font-family: 'Fira Mono', monospace; }
-    .r-no { color: #3a3730; font-size: 0.85rem; padding: 14px 20px; }
+    .r-term { color: #f0ece4; font-weight: 500; font-size: 0.88rem; }
+    .r-cat { font-size: 0.68rem; color: #5a5550; font-family: 'Fira Mono', monospace; }
+    .r-no { color: #3a3730; font-size: 0.82rem; padding: 12px 18px; }
 
     /* ALPHA */
     .alpha-bar-section { background: var(--cream); border-bottom: 1px solid var(--border); }
-    .alpha-bar-inner { max-width: 1240px; margin: 0 auto; padding: 24px 48px; }
-    .alpha-bar-label { font-family: 'Fira Mono', monospace; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
-    .alpha-bar { display: flex; flex-wrap: wrap; gap: 5px; }
-    .alpha-btn { width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; font-family: 'Fira Mono', monospace; font-size: 0.8rem; font-weight: 500; border: 1px solid var(--border); background: var(--surface); color: var(--ink2); cursor: pointer; transition: all 0.15s; text-decoration: none; border-radius: 1px; }
+    .alpha-bar-inner { max-width: 1200px; margin: 0 auto; padding: 20px 40px; }
+    .alpha-bar-label { font-family: 'Fira Mono', monospace; font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+    .alpha-bar { display: flex; flex-wrap: wrap; gap: 4px; }
+    .alpha-btn { width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-family: 'Fira Mono', monospace; font-size: 0.78rem; font-weight: 500; border: 1px solid var(--border); background: var(--surface); color: var(--ink2); cursor: pointer; transition: all 0.15s; text-decoration: none; border-radius: 1px; }
     .alpha-btn.inactive { opacity: 0.3; pointer-events: none; }
     .alpha-btn:hover:not(.inactive), .alpha-btn.active { background: var(--ink); color: #f0ece4; border-color: var(--ink); }
-    .alpha-btn.view-all { width: auto; padding: 0 12px; font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); border-color: var(--accent); }
-    .alpha-btn.view-all:hover { background: var(--accent); color: white; border-color: var(--accent); }
+    .alpha-btn.view-all { width: auto; padding: 0 10px; font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); border-color: var(--accent); }
+    .alpha-btn.view-all:hover { background: var(--accent); color: white; }
 
     /* PAGE */
-    .page { max-width: 1240px; margin: 0 auto; padding: 0 48px; }
-    .sec-head { padding: 60px 0 36px; }
-    .sec-eyebrow { font-family: 'Fira Mono', monospace; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
-    .sec-title { font-family: 'EB Garamond', serif; font-size: 2rem; font-weight: 500; line-height: 1.25; }
-    .sec-sub { color: var(--muted); margin-top: 6px; font-size: 0.9rem; }
+    .page { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+    .sec-head { padding: 48px 0 28px; }
+    .sec-eyebrow { font-family: 'Fira Mono', monospace; font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+    .sec-title { font-family: 'EB Garamond', serif; font-size: 1.85rem; font-weight: 500; line-height: 1.25; }
+    .sec-sub { color: var(--muted); margin-top: 5px; font-size: 0.88rem; }
 
     /* CARDS */
-    .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 16px; padding-bottom: 64px; }
-    .card { background: var(--surface); border: 1px solid var(--border); padding: 26px 26px 22px; border-radius: 2px; cursor: pointer; transition: border-color 0.18s, box-shadow 0.18s; }
-    .card:hover { border-color: var(--accent); box-shadow: 0 2px 16px rgba(26,79,160,0.08); }
-    .card-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
-    .card-letter { width: 38px; height: 38px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: var(--ink); color: #f0ece4; font-family: 'EB Garamond', serif; font-size: 1.15rem; font-weight: 500; border-radius: 1px; }
-    .card-tags { display: flex; flex-wrap: wrap; gap: 5px; justify-content: flex-end; }
-    .tag { font-family: 'Fira Mono', monospace; font-size: 0.62rem; letter-spacing: 0.05em; text-transform: uppercase; padding: 2px 7px; border-radius: 1px; font-weight: 500; }
+    .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 14px; padding-bottom: 56px; }
+    .card { background: var(--surface); border: 1px solid var(--border); padding: 22px 22px 18px; border-radius: 2px; cursor: pointer; transition: border-color 0.18s, box-shadow 0.18s; }
+    .card:hover { border-color: var(--accent); box-shadow: 0 2px 14px rgba(26,79,160,0.08); }
+    .card-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; margin-bottom: 12px; }
+    .card-letter { width: 34px; height: 34px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: var(--ink); color: #f0ece4; font-family: 'EB Garamond', serif; font-size: 1.05rem; font-weight: 500; border-radius: 1px; }
+    .card-tags { display: flex; flex-wrap: wrap; gap: 4px; justify-content: flex-end; }
+    .tag { font-family: 'Fira Mono', monospace; font-size: 0.6rem; letter-spacing: 0.04em; text-transform: uppercase; padding: 2px 6px; border-radius: 1px; font-weight: 500; }
     .tag-cat { background: #e8f0fb; color: var(--accent); }
     .tag-featured { background: #fef5e4; color: var(--gold); }
     .tag-new { background: var(--new-bg); color: var(--new-fg); }
-    .card-term { font-family: 'EB Garamond', serif; font-size: 1.3rem; font-weight: 500; margin-bottom: 8px; line-height: 1.3; }
-    .card-excerpt { color: var(--muted); font-size: 0.875rem; line-height: 1.65; }
-    .card-foot { margin-top: 18px; }
-    .card-read { font-family: 'Fira Mono', monospace; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); font-weight: 500; }
+    .card-term { font-family: 'EB Garamond', serif; font-size: 1.2rem; font-weight: 500; margin-bottom: 7px; line-height: 1.3; }
+    .card-excerpt { color: var(--muted); font-size: 0.845rem; line-height: 1.6; }
+    .card-foot { margin-top: 14px; }
+    .card-read { font-family: 'Fira Mono', monospace; font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); font-weight: 500; }
 
     /* CATEGORIES */
     .cats-section { background: var(--cream); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-    .cat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 10px; padding-bottom: 64px; }
-    .cat-item { background: var(--surface); border: 1px solid var(--border); padding: 16px 18px; border-radius: 2px; cursor: pointer; display: flex; align-items: center; justify-content: space-between; transition: all 0.15s; }
+    .cat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 8px; padding-bottom: 56px; }
+    .cat-item { background: var(--surface); border: 1px solid var(--border); padding: 14px 16px; border-radius: 2px; cursor: pointer; display: flex; align-items: center; justify-content: space-between; transition: all 0.15s; }
     .cat-item:hover { background: var(--ink); color: #f0ece4; border-color: var(--ink); }
     .cat-item:hover .cat-count { color: #5a5550; }
-    .cat-name { font-weight: 500; font-size: 0.88rem; }
-    .cat-count { font-family: 'Fira Mono', monospace; font-size: 0.72rem; color: var(--muted); }
+    .cat-name { font-weight: 500; font-size: 0.85rem; }
+    .cat-count { font-family: 'Fira Mono', monospace; font-size: 0.7rem; color: var(--muted); }
 
     /* RECENT */
-    .recent-list { padding-bottom: 64px; }
-    .recent-item { display: flex; gap: 20px; align-items: flex-start; padding: 22px 0; border-bottom: 1px solid var(--border); }
+    .recent-list { padding-bottom: 56px; }
+    .recent-item { display: flex; gap: 16px; align-items: flex-start; padding: 18px 0; border-bottom: 1px solid var(--border); }
     .recent-item:last-child { border-bottom: none; }
-    .recent-tag-new { flex-shrink: 0; margin-top: 3px; font-family: 'Fira Mono', monospace; font-size: 0.62rem; padding: 3px 8px; background: var(--accent); color: white; border-radius: 1px; letter-spacing: 0.06em; text-transform: uppercase; }
+    .recent-tag-new { flex-shrink: 0; margin-top: 2px; font-family: 'Fira Mono', monospace; font-size: 0.6rem; padding: 2px 7px; background: var(--accent); color: white; border-radius: 1px; letter-spacing: 0.06em; text-transform: uppercase; }
     .recent-body { flex: 1; }
-    .recent-term { font-family: 'EB Garamond', serif; font-size: 1.1rem; font-weight: 500; cursor: pointer; transition: color 0.15s; }
+    .recent-term { font-family: 'EB Garamond', serif; font-size: 1.05rem; font-weight: 500; cursor: pointer; transition: color 0.15s; }
     .recent-term:hover { color: var(--accent); }
-    .recent-def { color: var(--muted); font-size: 0.855rem; line-height: 1.65; margin-top: 3px; }
-    .recent-more { color: var(--accent); font-size: 0.82rem; cursor: pointer; }
+    .recent-def { color: var(--muted); font-size: 0.835rem; line-height: 1.6; margin-top: 3px; }
+    .recent-more { color: var(--accent); font-size: 0.8rem; cursor: pointer; }
     .recent-more:hover { text-decoration: underline; }
 
     /* AUTHOR */
     .author-section { background: var(--ink); color: #f0ece4; }
-    .author-inner { max-width: 1240px; margin: 0 auto; padding: 80px 48px; display: grid; grid-template-columns: 1fr 380px; gap: 80px; align-items: center; }
-    .author-eyebrow { font-family: 'Fira Mono', monospace; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
-    .author-title { font-family: 'EB Garamond', serif; font-size: 2.2rem; font-weight: 500; line-height: 1.2; margin-bottom: 16px; }
-    .author-body { color: #6a6560; line-height: 1.75; font-size: 0.95rem; }
-    .author-links { margin-top: 32px; display: flex; gap: 12px; flex-wrap: wrap; }
-    .btn-solid { padding: 12px 26px; background: var(--accent); color: white; font-size: 0.82rem; font-weight: 600; border-radius: 2px; text-decoration: none; transition: opacity 0.2s; }
+    .author-inner { max-width: 1200px; margin: 0 auto; padding: 60px 40px; display: grid; grid-template-columns: 1fr 340px; gap: 60px; align-items: center; }
+    .author-eyebrow { font-family: 'Fira Mono', monospace; font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+    .author-title { font-family: 'EB Garamond', serif; font-size: 2rem; font-weight: 500; line-height: 1.2; margin-bottom: 14px; }
+    .author-body { color: #6a6560; line-height: 1.75; font-size: 0.92rem; }
+    .author-links { margin-top: 28px; display: flex; gap: 10px; flex-wrap: wrap; }
+    .btn-solid { padding: 10px 22px; background: var(--accent); color: white; font-size: 0.8rem; font-weight: 600; border-radius: 2px; text-decoration: none; transition: opacity 0.2s; }
     .btn-solid:hover { opacity: 0.85; }
-    .btn-ghost { padding: 12px 26px; background: transparent; border: 1px solid #2e2b27; color: #8a857c; font-size: 0.82rem; font-weight: 500; border-radius: 2px; text-decoration: none; transition: all 0.18s; }
+    .btn-ghost { padding: 10px 22px; background: transparent; border: 1px solid #2e2b27; color: #8a857c; font-size: 0.8rem; border-radius: 2px; text-decoration: none; transition: all 0.18s; }
     .btn-ghost:hover { border-color: #5a5550; color: #f0ece4; }
-    .author-card { background: #12100e; border: 1px solid #2e2b27; padding: 36px 32px; border-radius: 2px; }
-    .author-card-monogram { width: 64px; height: 64px; border-radius: 50%; background: var(--accent); color: white; display: flex; align-items: center; justify-content: center; font-family: 'EB Garamond', serif; font-size: 1.6rem; font-weight: 500; margin-bottom: 16px; }
-    .author-card-name { font-family: 'EB Garamond', serif; font-size: 1.4rem; font-weight: 500; margin-bottom: 4px; }
-    .author-card-role { font-family: 'Fira Mono', monospace; font-size: 0.7rem; color: #4a4540; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 20px; }
-    .author-card-stats { display: flex; gap: 24px; }
-    .ac-stat .n { font-family: 'EB Garamond', serif; font-size: 1.6rem; color: #f0ece4; display: block; line-height: 1; }
-    .ac-stat .l { font-size: 0.68rem; color: #4a4540; font-family: 'Fira Mono', monospace; letter-spacing: 0.08em; text-transform: uppercase; margin-top: 2px; }
+    .author-card { background: #12100e; border: 1px solid #2e2b27; padding: 30px 28px; border-radius: 2px; }
+    .author-card-monogram { width: 56px; height: 56px; border-radius: 50%; background: var(--accent); color: white; display: flex; align-items: center; justify-content: center; font-family: 'EB Garamond', serif; font-size: 1.4rem; margin-bottom: 14px; }
+    .author-card-name { font-family: 'EB Garamond', serif; font-size: 1.3rem; font-weight: 500; margin-bottom: 3px; }
+    .author-card-role { font-family: 'Fira Mono', monospace; font-size: 0.65rem; color: #4a4540; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 18px; }
+    .author-card-stats { display: flex; gap: 20px; }
+    .ac-stat .n { font-family: 'EB Garamond', serif; font-size: 1.5rem; color: #f0ece4; display: block; line-height: 1; }
+    .ac-stat .l { font-size: 0.65rem; color: #4a4540; font-family: 'Fira Mono', monospace; letter-spacing: 0.08em; text-transform: uppercase; margin-top: 2px; }
 
     /* MODAL */
-    .overlay { position: fixed; inset: 0; z-index: 500; background: rgba(10,9,8,0.82); backdrop-filter: blur(5px); display: none; align-items: flex-start; justify-content: center; padding: 56px 20px; overflow-y: auto; }
+    .overlay { position: fixed; inset: 0; z-index: 500; background: rgba(10,9,8,0.85); backdrop-filter: blur(4px); display: none; align-items: flex-start; justify-content: center; padding: 48px 16px; overflow-y: auto; }
     .overlay.open { display: flex; }
-    .modal { background: var(--surface); max-width: 700px; width: 100%; padding: 52px; border-radius: 2px; position: relative; animation: rise 0.22s ease; border: 1px solid var(--border); }
-    @keyframes rise { from { transform: translateY(18px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-    .modal-close { position: absolute; top: 18px; right: 18px; background: none; border: none; font-size: 1.2rem; color: var(--muted); cursor: pointer; padding: 4px 8px; transition: color 0.15s; }
+    .modal { background: var(--surface); max-width: 660px; width: 100%; padding: 44px; border-radius: 2px; position: relative; animation: rise 0.2s ease; border: 1px solid var(--border); }
+    @keyframes rise { from { transform: translateY(16px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    .modal-close { position: absolute; top: 16px; right: 16px; background: none; border: none; font-size: 1.1rem; color: var(--muted); cursor: pointer; padding: 4px 8px; transition: color 0.15s; }
     .modal-close:hover { color: var(--ink); }
-    .modal-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
-    .modal-title { font-family: 'EB Garamond', serif; font-size: 2.5rem; font-weight: 500; line-height: 1.15; margin-bottom: 6px; }
-    .modal-letter { font-family: 'Fira Mono', monospace; font-size: 0.7rem; color: var(--muted); letter-spacing: 0.1em; margin-bottom: 24px; }
-    .modal-divider { border: none; border-top: 1px solid var(--border); margin-bottom: 24px; }
-    .modal-body { color: var(--ink2); line-height: 1.85; font-size: 1rem; }
-    .modal-foot { margin-top: 32px; padding-top: 22px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
-    .modal-author-line { font-size: 0.8rem; color: var(--muted); }
+    .modal-tags { display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 12px; }
+    .modal-title { font-family: 'EB Garamond', serif; font-size: 2.2rem; font-weight: 500; line-height: 1.15; margin-bottom: 5px; }
+    .modal-letter { font-family: 'Fira Mono', monospace; font-size: 0.68rem; color: var(--muted); letter-spacing: 0.1em; margin-bottom: 20px; }
+    .modal-divider { border: none; border-top: 1px solid var(--border); margin-bottom: 20px; }
+    .modal-body { color: var(--ink2); line-height: 1.85; font-size: 0.97rem; }
+    .modal-foot { margin-top: 28px; padding-top: 18px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+    .modal-author-line { font-size: 0.78rem; color: var(--muted); }
     .modal-author-line strong { color: var(--ink2); font-weight: 600; }
 
     /* EMPTY */
-    .empty-state { grid-column: 1/-1; text-align: center; padding: 60px 20px; color: var(--muted); }
-    .empty-state .e-icon { font-size: 2rem; margin-bottom: 12px; }
-    .empty-state p { font-size: 0.9rem; }
-    .empty-reset { display: inline-block; margin-top: 12px; font-size: 0.8rem; color: var(--accent); cursor: pointer; text-decoration: underline; }
+    .empty-state { grid-column: 1/-1; text-align: center; padding: 48px 20px; color: var(--muted); }
+    .empty-state .e-icon { font-size: 1.8rem; margin-bottom: 10px; }
+    .empty-state p { font-size: 0.88rem; }
+    .empty-reset { display: inline-block; margin-top: 10px; font-size: 0.78rem; color: var(--accent); cursor: pointer; text-decoration: underline; }
 
     /* FOOTER */
-    footer { background: #0d0c0a; color: #3a3530; padding: 52px 48px 32px; }
-    .footer-grid { max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; margin-bottom: 40px; }
-    .footer-brand { font-family: 'EB Garamond', serif; font-size: 1.1rem; color: #8a857c; margin-bottom: 8px; }
-    .footer-tagline { font-size: 0.83rem; line-height: 1.6; }
-    footer h4 { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.15em; color: #4a4540; margin-bottom: 14px; font-family: 'Fira Mono', monospace; }
-    footer ul { list-style: none; display: flex; flex-direction: column; gap: 9px; }
-    footer ul li a { color: #3a3530; text-decoration: none; font-size: 0.85rem; transition: color 0.15s; }
+    footer { background: #0d0c0a; color: #3a3530; padding: 40px 40px 28px; }
+    .footer-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 32px; }
+    .footer-brand { font-family: 'EB Garamond', serif; font-size: 1.05rem; color: #8a857c; margin-bottom: 7px; }
+    .footer-tagline { font-size: 0.8rem; line-height: 1.6; }
+    footer h4 { font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.15em; color: #4a4540; margin-bottom: 12px; font-family: 'Fira Mono', monospace; }
+    footer ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    footer ul li a { color: #3a3530; text-decoration: none; font-size: 0.82rem; transition: color 0.15s; }
     footer ul li a:hover { color: #8a857c; }
-    .footer-bottom { max-width: 1240px; margin: 0 auto; padding-top: 22px; border-top: 1px solid #1a1816; font-size: 0.75rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+    .footer-bottom { max-width: 1200px; margin: 0 auto; padding-top: 18px; border-top: 1px solid #1a1816; font-size: 0.72rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; }
 
     /* RESPONSIVE */
-    @media (max-width: 900px) {
-      nav, .hero, .page, footer { padding-left: 24px; padding-right: 24px; }
-      .alpha-bar-inner { padding: 18px 24px; }
-      .hero { padding-top: 64px; padding-bottom: 80px; }
-      .author-inner { grid-template-columns: 1fr; gap: 40px; padding: 60px 24px; }
+    @media (max-width: 860px) {
+      .site-header, .hero, .page, .alpha-bar-inner, footer { padding-left: 20px; padding-right: 20px; }
+      .hero { padding-top: 40px; padding-bottom: 52px; }
+      .author-inner { grid-template-columns: 1fr; gap: 32px; padding: 48px 20px; }
       .author-card { display: none; }
-      .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 24px; }
       .cards-grid { grid-template-columns: 1fr; }
+      .header-links { display: none; }
     }
-    @media (max-width: 600px) {
-      .nav-links { display: none; }
-      .hero h1 { font-size: 2.4rem; }
-      .hero-stats { gap: 28px; }
-      .modal { padding: 28px 22px; }
-      .modal-title { font-size: 1.8rem; }
+    @media (max-width: 540px) {
+      .hero h1 { font-size: 2.1rem; }
+      .hero-stats { gap: 20px; }
+      .modal { padding: 24px 18px; }
+      .modal-title { font-size: 1.7rem; }
       .footer-bottom { flex-direction: column; }
     }
   </style>
 </head>
 <body>
 
-<nav>
-  <a class="nav-brand" href="#">
-    <span class="nav-brand-name">Physics Dictionary</span>
-    <span class="nav-brand-sub">by Mukesh T</span>
+<header class="site-header">
+  <a class="header-brand" href="#">
+    <span class="header-brand-name">Physics Dictionary</span>
+    <span class="header-brand-sub">by Mukesh T</span>
   </a>
-  <ul class="nav-links">
+  <ul class="header-links">
     <li><a href="#browse">Browse</a></li>
     <li><a href="#categories">Categories</a></li>
     <li><a href="#recent">Recently Added</a></li>
     <li><a href="#about">About</a></li>
   </ul>
-</nav>
+</header>
 
 <section class="hero">
   <div class="hero-inner">
@@ -211,11 +210,11 @@
     <div class="hero-stats">
       <div class="stat"><span class="n" id="stat-terms">—</span><span class="l">Terms Defined</span></div>
       <div class="stat"><span class="n" id="stat-cats">—</span><span class="l">Categories</span></div>
-      <div class="stat"><span class="n">∞</span><span class="l">Continuously Updated</span></div>
+      <div class="stat"><span class="n">&#8734;</span><span class="l">Continuously Updated</span></div>
     </div>
     <div class="search-wrap">
       <input type="text" id="search-input" placeholder="Search terms, principles, equations…" autocomplete="off" spellcheck="false"/>
-      <span class="search-icon">⌕</span>
+      <span class="search-icon">&#9906;</span>
       <div id="search-results"></div>
     </div>
   </div>
@@ -261,17 +260,17 @@
     <div>
       <div class="author-eyebrow">Canonical Source</div>
       <h2 class="author-title">Defined by Mukesh T</h2>
-      <p class="author-body">Every definition in this dictionary is authored by Mukesh T — not scraped, not crowdsourced, but written with precision and authority. These are the canonical definitions for the serious student and practitioner of physics.</p>
-      <p class="author-body" style="margin-top:12px">This dictionary exists to give physics a shared, precise vocabulary — from introductory mechanics to the frontiers of quantum gravity and cosmology.</p>
+      <p class="author-body">Every definition in this dictionary is authored by Mukesh T — written with precision and authority for the serious student and practitioner of physics.</p>
+      <p class="author-body" style="margin-top:10px">This dictionary exists to give physics a shared, precise vocabulary — from introductory mechanics to the frontiers of quantum gravity and cosmology.</p>
       <div class="author-links">
         <a href="#browse" class="btn-solid">Browse All Terms</a>
-        <a href="#about" class="btn-ghost">About the Author</a>
+        <a href="https://scitechgen.com" target="_parent" class="btn-ghost">Visit SciTechGen</a>
       </div>
     </div>
     <div class="author-card">
       <div class="author-card-monogram">MT</div>
       <div class="author-card-name">Mukesh T</div>
-      <div class="author-card-role">Physicist &amp; Author</div>
+      <div class="author-card-role">Physicist &amp; Educator</div>
       <div class="author-card-stats">
         <div class="ac-stat"><span class="n" id="as-terms">—</span><span class="l">Terms</span></div>
         <div class="ac-stat"><span class="n" id="as-cats">—</span><span class="l">Categories</span></div>
@@ -284,35 +283,35 @@
   <div class="footer-grid">
     <div>
       <div class="footer-brand">Physics Dictionary</div>
-      <p class="footer-tagline">The authoritative lexicon of physics. Curated and defined by Mukesh T.</p>
+      <p class="footer-tagline">The authoritative lexicon of physics. Curated and defined by Mukesh T for SciTechGen.</p>
     </div>
     <div>
       <h4>Navigate</h4>
       <ul>
-        <li><a href="#">Home</a></li>
         <li><a href="#browse">Full Dictionary</a></li>
         <li><a href="#categories">Categories</a></li>
-        <li><a href="#about">About &amp; Attribution</a></li>
+        <li><a href="#recent">Recently Added</a></li>
+        <li><a href="#about">About</a></li>
       </ul>
     </div>
     <div>
-      <h4>Resources</h4>
+      <h4>SciTechGen</h4>
       <ul>
-        <li><a href="#">Author's Website</a></li>
-        <li><a href="#">IP Policy</a></li>
-        <li><a href="#">Terms of Use</a></li>
+        <li><a href="https://scitechgen.com" target="_parent">scitechgen.com</a></li>
+        <li><a href="https://scitechgen.com/cbse-physics-class-xii-2/" target="_parent">CBSE Physics XII</a></li>
+        <li><a href="https://scitechgen.com/cbse-physics-class-xi-2/" target="_parent">CBSE Physics XI</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    <span>© 2026 Mukesh T. All rights reserved.</span>
-    <span>Unauthorised reproduction prohibited.</span>
+    <span>&#169; 2026 Mukesh T. All rights reserved.</span>
+    <span>Part of <a href="https://scitechgen.com" target="_parent" style="color:#5a5550">SciTechGen.com</a></span>
   </div>
 </footer>
 
 <div class="overlay" id="overlay">
   <div class="modal" role="dialog" aria-modal="true">
-    <button class="modal-close" id="modal-close" aria-label="Close">✕</button>
+    <button class="modal-close" id="modal-close" aria-label="Close">&#10005;</button>
     <div class="modal-tags" id="modal-tags"></div>
     <h2 class="modal-title" id="modal-title"></h2>
     <div class="modal-letter" id="modal-letter"></div>
@@ -326,7 +325,6 @@
 </div>
 
 <script>
-// ── INLINE DATA (injected by build.py — do not edit here, edit terms.json) ──
 const allTerms = [
   {
     "id": 1,
@@ -547,21 +545,9 @@ const allTerms = [
     "coined_by_author": false,
     "excerpt": "The concept that every quantum entity exhibits both wave-like and particle-like properties depending on how it is observed or measured.",
     "definition": "Wave-particle duality is the principle that quantum entities — electrons, photons, atoms, and even molecules — exhibit both wave-like and particle-like behaviour depending on the experimental context. In the double-slit experiment, particles produce an interference pattern characteristic of waves when unobserved, but behave as localized particles when their path is measured. de Broglie's 1924 hypothesis that all matter has an associated wavelength (λ = h/p) extended this duality to all particles. Wave-particle duality is not a paradox but a feature of quantum mechanics: the quantum wavefunction encodes all probabilistic information about a system, and measurement collapses it to a definite outcome."
-  },
-  {
-    "id": 21,
-    "term": "Dimensions",
-    "letter": "D",
-    "category": "Measurements",
-    "featured": true,
-    "new": true,
-    "coined_by_author": false,
-    "excerpt": "The concept that every quantum entity exhibits both wave-like and particle-like properties depending on how it is observed or measured.",
-    "definition": "Dimension of a physical quantity are the powers to which the fundamental quantities must be raised in order to get the units of the derived physical quantity."
   }
 ];
 
-// ── INIT ──
 (function() {
   const cats = [...new Set(allTerms.map(t => t.category))].sort();
   document.getElementById('stat-terms').textContent = allTerms.length + '+';
@@ -572,185 +558,83 @@ const allTerms = [
   buildCategories(cats);
   buildRecentList();
   showGrid(allTerms.filter(t => t.featured), 'Most Referenced', 'Essential Terms', 'The foundational vocabulary every physicist needs to know.');
+  notifyHeight();
 })();
 
-// ── ALPHA BAR ──
-function buildAlphaBar() {
-  const bar  = document.getElementById('alpha-bar');
-  const used = new Set(allTerms.map(t => t.letter.toUpperCase()));
+function notifyHeight() {
+  try { window.parent.postMessage({ type: 'iframeHeight', height: document.body.scrollHeight }, '*'); } catch(e) {}
+}
+new ResizeObserver(notifyHeight).observe(document.body);
 
+function buildAlphaBar() {
+  const bar = document.getElementById('alpha-bar');
+  const used = new Set(allTerms.map(t => t.letter.toUpperCase()));
   const allBtn = makeBtn('All', false);
   allBtn.classList.add('view-all');
-  allBtn.addEventListener('click', e => {
-    e.preventDefault(); clearAlpha(); allBtn.classList.add('active');
-    showGrid(allTerms.filter(t => t.featured), 'Most Referenced', 'Essential Terms', 'The foundational vocabulary every physicist needs to know.');
-    scrollToGrid();
-  });
+  allBtn.addEventListener('click', e => { e.preventDefault(); clearAlpha(); allBtn.classList.add('active'); showGrid(allTerms.filter(t => t.featured), 'Most Referenced', 'Essential Terms', 'The foundational vocabulary every physicist needs to know.'); scrollToGrid(); });
   bar.appendChild(allBtn);
-
   'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').forEach(l => {
     const btn = makeBtn(l, !used.has(l));
-    btn.addEventListener('click', e => {
-      e.preventDefault();
-      if (!used.has(l)) return;
-      clearAlpha(); btn.classList.add('active');
-      const hits = allTerms.filter(t => t.letter.toUpperCase() === l);
-      showGrid(hits, 'Browse', 'Terms: ' + l, hits.length + ' term' + (hits.length !== 1 ? 's' : '') + ' starting with ' + l);
-      scrollToGrid();
-    });
+    btn.addEventListener('click', e => { e.preventDefault(); if (!used.has(l)) return; clearAlpha(); btn.classList.add('active'); const hits = allTerms.filter(t => t.letter.toUpperCase() === l); showGrid(hits, 'Browse', 'Terms: ' + l, hits.length + ' term' + (hits.length !== 1 ? 's' : '') + ' starting with ' + l); scrollToGrid(); });
     bar.appendChild(btn);
   });
 }
-
-function makeBtn(text, inactive) {
-  const b = document.createElement('a');
-  b.className = 'alpha-btn' + (inactive ? ' inactive' : '');
-  b.textContent = text; b.href = '#';
-  return b;
-}
+function makeBtn(text, inactive) { const b = document.createElement('a'); b.className = 'alpha-btn' + (inactive ? ' inactive' : ''); b.textContent = text; b.href = '#'; return b; }
 function clearAlpha() { document.querySelectorAll('.alpha-btn').forEach(b => b.classList.remove('active')); }
 
-// ── GRID ──
 function showGrid(terms, eyebrow, title, sub) {
   document.getElementById('grid-eyebrow').textContent = eyebrow;
   document.getElementById('grid-title').textContent   = title;
   document.getElementById('grid-sub').textContent     = sub;
   const grid = document.getElementById('cards-grid');
   grid.innerHTML = '';
-  if (!terms.length) {
-    grid.innerHTML = '<div class="empty-state"><div class="e-icon">⚛</div><p>No terms found.</p><span class="empty-reset" onclick="resetGrid()">Reset</span></div>';
-    return;
-  }
+  if (!terms.length) { grid.innerHTML = '<div class="empty-state"><div class="e-icon">&#9883;</div><p>No terms found.</p><span class="empty-reset" onclick="resetGrid()">Reset</span></div>'; return; }
   terms.forEach(t => grid.appendChild(buildCard(t)));
+  setTimeout(notifyHeight, 100);
 }
-
-function resetGrid() {
-  clearAlpha();
-  showGrid(allTerms.filter(t => t.featured), 'Most Referenced', 'Essential Terms', 'The foundational vocabulary every physicist needs to know.');
-}
-
+function resetGrid() { clearAlpha(); showGrid(allTerms.filter(t => t.featured), 'Most Referenced', 'Essential Terms', 'The foundational vocabulary every physicist needs to know.'); }
 function buildCard(t) {
-  const el = document.createElement('div');
-  el.className = 'card';
-  el.innerHTML =
-    '<div class="card-head">' +
-      '<div class="card-letter">' + esc(t.letter.toUpperCase()) + '</div>' +
-      '<div class="card-tags">' +
-        '<span class="tag tag-cat">' + esc(t.category) + '</span>' +
-        (t.featured ? '<span class="tag tag-featured">★ Featured</span>' : '') +
-        (t.new      ? '<span class="tag tag-new">New</span>' : '') +
-      '</div>' +
-    '</div>' +
-    '<div class="card-term">' + esc(t.term) + '</div>' +
-    '<div class="card-excerpt">' + esc(t.excerpt) + '</div>' +
-    '<div class="card-foot"><span class="card-read">Read definition →</span></div>';
-  el.addEventListener('click', () => openModal(t.id));
-  return el;
+  const el = document.createElement('div'); el.className = 'card';
+  el.innerHTML = '<div class="card-head"><div class="card-letter">' + esc(t.letter.toUpperCase()) + '</div><div class="card-tags"><span class="tag tag-cat">' + esc(t.category) + '</span>' + (t.featured ? '<span class="tag tag-featured">&#9733; Featured</span>' : '') + (t.new ? '<span class="tag tag-new">New</span>' : '') + '</div></div><div class="card-term">' + esc(t.term) + '</div><div class="card-excerpt">' + esc(t.excerpt) + '</div><div class="card-foot"><span class="card-read">Read definition &#8594;</span></div>';
+  el.addEventListener('click', () => openModal(t.id)); return el;
 }
 
-// ── CATEGORIES ──
 function buildCategories(cats) {
   const grid = document.getElementById('cat-grid');
-  cats.forEach(cat => {
-    const count = allTerms.filter(t => t.category === cat).length;
-    const el = document.createElement('div');
-    el.className = 'cat-item';
-    el.innerHTML = '<span class="cat-name">' + esc(cat) + '</span><span class="cat-count">' + count + '</span>';
-    el.addEventListener('click', () => {
-      clearAlpha();
-      const hits = allTerms.filter(t => t.category === cat);
-      showGrid(hits, 'Category', cat, hits.length + ' term' + (hits.length !== 1 ? 's' : ''));
-      scrollToGrid();
-    });
-    grid.appendChild(el);
-  });
+  cats.forEach(cat => { const count = allTerms.filter(t => t.category === cat).length; const el = document.createElement('div'); el.className = 'cat-item'; el.innerHTML = '<span class="cat-name">' + esc(cat) + '</span><span class="cat-count">' + count + '</span>'; el.addEventListener('click', () => { clearAlpha(); const hits = allTerms.filter(t => t.category === cat); showGrid(hits, 'Category', cat, hits.length + ' term' + (hits.length !== 1 ? 's' : '')); scrollToGrid(); }); grid.appendChild(el); });
 }
 
-// ── RECENT ──
 function buildRecentList() {
   const newTerms = allTerms.filter(t => t.new);
-  document.getElementById('recent-sub').textContent =
-    allTerms.length + '+ terms — ' + newTerms.length + ' recently added.';
+  document.getElementById('recent-sub').textContent = allTerms.length + '+ terms — ' + newTerms.length + ' recently added.';
   const list = document.getElementById('recent-list');
-  if (!newTerms.length) {
-    list.innerHTML = '<p style="color:var(--muted);font-size:.9rem;padding:24px 0">No recently added terms yet.</p>';
-    return;
-  }
-  newTerms.forEach(t => {
-    const el = document.createElement('div');
-    el.className = 'recent-item';
-    const preview = t.definition.length > 220 ? t.definition.slice(0, 220) + '…' : t.definition;
-    el.innerHTML =
-      '<span class="recent-tag-new">New</span>' +
-      '<div class="recent-body">' +
-        '<div class="recent-term" data-id="' + t.id + '">' + esc(t.term) + '</div>' +
-        '<p class="recent-def">' + esc(preview) + ' <span class="recent-more" data-id="' + t.id + '">View definition</span></p>' +
-      '</div>';
-    list.appendChild(el);
-  });
+  if (!newTerms.length) { list.innerHTML = '<p style="color:var(--muted);font-size:.88rem;padding:20px 0">No recently added terms yet.</p>'; return; }
+  newTerms.forEach(t => { const el = document.createElement('div'); el.className = 'recent-item'; const preview = t.definition.length > 200 ? t.definition.slice(0, 200) + '…' : t.definition; el.innerHTML = '<span class="recent-tag-new">New</span><div class="recent-body"><div class="recent-term" data-id="' + t.id + '">' + esc(t.term) + '</div><p class="recent-def">' + esc(preview) + ' <span class="recent-more" data-id="' + t.id + '">View definition</span></p></div>'; list.appendChild(el); });
 }
 
-// ── MODAL ──
 function openModal(id) {
-  const t = allTerms.find(x => x.id === id);
-  if (!t) return;
-  document.getElementById('modal-title').textContent  = t.term;
-  document.getElementById('modal-letter').textContent = t.letter.toUpperCase() + ' — ' + t.category;
-  document.getElementById('modal-body').textContent   = t.definition;
+  const t = allTerms.find(x => x.id === id); if (!t) return;
+  document.getElementById('modal-title').textContent = t.term;
+  document.getElementById('modal-letter').textContent = t.letter.toUpperCase() + ' \u2014 ' + t.category;
+  document.getElementById('modal-body').textContent = t.definition;
   document.getElementById('modal-cat-label').textContent = t.category;
-  document.getElementById('modal-tags').innerHTML =
-    '<span class="tag tag-cat">' + esc(t.category) + '</span>' +
-    (t.featured ? '<span class="tag tag-featured">★ Featured</span>' : '') +
-    (t.new      ? '<span class="tag tag-new">New</span>' : '');
+  document.getElementById('modal-tags').innerHTML = '<span class="tag tag-cat">' + esc(t.category) + '</span>' + (t.featured ? '<span class="tag tag-featured">&#9733; Featured</span>' : '') + (t.new ? '<span class="tag tag-new">New</span>' : '');
   document.getElementById('overlay').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
-function closeModal() {
-  document.getElementById('overlay').classList.remove('open');
-  document.body.style.overflow = '';
-}
+function closeModal() { document.getElementById('overlay').classList.remove('open'); document.body.style.overflow = ''; setTimeout(notifyHeight, 100); }
 document.getElementById('modal-close').addEventListener('click', closeModal);
 document.getElementById('overlay').addEventListener('click', e => { if (e.target.id === 'overlay') closeModal(); });
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+document.addEventListener('click', e => { const el = e.target.closest('[data-id]'); if (el && !el.classList.contains('card')) { e.preventDefault(); openModal(+el.dataset.id); } });
 
-// delegate data-id clicks (recent list)
-document.addEventListener('click', e => {
-  const el = e.target.closest('[data-id]');
-  if (el && !el.classList.contains('card')) { e.preventDefault(); openModal(+el.dataset.id); }
-});
-
-// ── SEARCH ──
 const inp = document.getElementById('search-input');
 const res = document.getElementById('search-results');
-inp.addEventListener('input', () => {
-  const q = inp.value.trim().toLowerCase();
-  if (!q) { res.style.display = 'none'; return; }
-  const hits = allTerms.filter(t =>
-    t.term.toLowerCase().includes(q) || t.category.toLowerCase().includes(q) || t.excerpt.toLowerCase().includes(q)
-  ).slice(0, 8);
-  res.innerHTML = hits.length
-    ? hits.map(t => '<div class="r-item" data-id="' + t.id + '"><span class="r-term">' + esc(t.term) + '</span><span class="r-cat">' + esc(t.category) + '</span></div>').join('')
-    : '<div class="r-no">No terms found.</div>';
-  res.style.display = 'block';
-});
-document.addEventListener('click', e => {
-  if (!inp.contains(e.target) && !res.contains(e.target)) res.style.display = 'none';
-});
-inp.addEventListener('keydown', e => {
-  if (e.key !== 'Enter') return;
-  const q = inp.value.trim().toLowerCase();
-  if (!q) return;
-  res.style.display = 'none'; inp.value = '';
-  const hits = allTerms.filter(t =>
-    t.term.toLowerCase().includes(q) || t.category.toLowerCase().includes(q) || t.excerpt.toLowerCase().includes(q)
-  );
-  clearAlpha();
-  showGrid(hits, 'Search Results', '"' + q + '"', hits.length + ' term' + (hits.length !== 1 ? 's' : '') + ' matched');
-  scrollToGrid();
-});
+inp.addEventListener('input', () => { const q = inp.value.trim().toLowerCase(); if (!q) { res.style.display = 'none'; return; } const hits = allTerms.filter(t => t.term.toLowerCase().includes(q) || t.category.toLowerCase().includes(q) || t.excerpt.toLowerCase().includes(q)).slice(0, 8); res.innerHTML = hits.length ? hits.map(t => '<div class="r-item" data-id="' + t.id + '"><span class="r-term">' + esc(t.term) + '</span><span class="r-cat">' + esc(t.category) + '</span></div>').join('') : '<div class="r-no">No terms found.</div>'; res.style.display = 'block'; });
+document.addEventListener('click', e => { if (!inp.contains(e.target) && !res.contains(e.target)) res.style.display = 'none'; });
+inp.addEventListener('keydown', e => { if (e.key !== 'Enter') return; const q = inp.value.trim().toLowerCase(); if (!q) return; res.style.display = 'none'; inp.value = ''; const hits = allTerms.filter(t => t.term.toLowerCase().includes(q) || t.category.toLowerCase().includes(q) || t.excerpt.toLowerCase().includes(q)); clearAlpha(); showGrid(hits, 'Search Results', '"' + q + '"', hits.length + ' term' + (hits.length !== 1 ? 's' : '') + ' matched'); scrollToGrid(); });
 
-// ── HELPERS ──
-function scrollToGrid() { document.querySelector('.page').scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+function scrollToGrid() { document.querySelector('.page').scrollIntoView({ behavior: 'smooth', block: 'start' }); setTimeout(notifyHeight, 400); }
 function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 </script>
 </body>
